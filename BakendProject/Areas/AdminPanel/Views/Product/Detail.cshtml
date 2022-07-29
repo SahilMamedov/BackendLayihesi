@@ -1,0 +1,30 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+         <div class="col-md-6 d-flex align-items-stretch">
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">@Model.Name</h4>
+                      @foreach (var item in Model.ProductImages)
+                     {
+                        <img  src="~/images/@item.ImageUrl"> 
+                     }
+                
+                      
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+
+
+
+</div>
+
+

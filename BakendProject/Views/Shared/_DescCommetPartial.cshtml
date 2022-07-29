@@ -1,0 +1,61 @@
+﻿   @model DetailVM 
+<div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                    <div class="description">
+                       <p>@Model.Product.Desc</p>
+                    </div> <!-- Description -->
+                </div>
+               <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                    <div class="product-rating-content">
+                        <div class="average-rating">
+                      
+                            <p>Based on 9 Comments</p>
+                        </div>
+                     
+                     @foreach (var item in Model.comments)
+                    {
+                           <div class="rating-items">
+                         
+                     
+                            <div class="single-rating-item">
+                                <div class="rating-author d-flex flex-wrap">
+                                    <h4 class="author-name">@item.appUser.Name</h4>
+                                    <ul class="rating-star">
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><span>(5)</span></li>
+                                    </ul>
+                                </div>
+                                <p>@item.Desc</p>
+                            </div>
+                        </div>
+                    }
+                        
+                        <div class="rating-form">
+                            <h4 class="form-title">Add your Comments</h4>
+                            
+                            <form >
+                             
+                                <div class="row">
+                              
+                                    <div class="col-md-12">
+                                        <div class="single-form">
+                                            <label>Your Review:</label>
+                                            <textarea class="textArea" placeholder="Write a review"></textarea>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </form>
+                             <div class="col-md-12">
+                                        
+                                           <a class="commentBtn btn btn-success">Add comment</a>
+                                      
+                                    </div>
+                        </div>
+                    </div> <!-- Rating Content -->
+                </div>
+            </div> 

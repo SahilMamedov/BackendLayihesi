@@ -1,0 +1,54 @@
+﻿
+@model Category
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+
+      <div class="grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create category form</h4>
+                
+                  <form class="forms-sample" action="create" method="post">
+                    <div class="form-group">
+                      <label asp-for="Name" ></label>
+                      <input asp-for="Name"  class="form-control" placeholder="Name">
+                <span class="text-danger" asp-validation-for="Name"> </span>
+                  </div>
+
+                    <div class="form-group">
+                       <div>Parent-dir</div>
+                  <select  asp-for="ParentId" class="form-select" asp-items="@ViewBag.Categories" aria-label="Default select example">
+                   <option  selected>Open this select menu</option>
+                  </select>
+                  </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              <a asp-action="index" class="btn btn-dark">  Go back  </a>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+</div>
+@*@section scripts
+{
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <partial name="_validationpartial">
+         <script>
+             classiceditor
+                     
+                                .create( document.queryselector( '#Id' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+                </script>
+}
+
+*@

@@ -1,0 +1,97 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+
+      <div class="grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create Product form</h4>
+                
+                  <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label asp-for="Name" ></label>
+                      <input asp-for="Name"  class="form-control">
+                <span asp-validation-for="Name"> </span>
+                  </div>
+                                       <div class="form-group">
+                      <label asp-for="Price" ></label>
+                      <input asp-for="Price"  class="form-control">
+                <span asp-validation-for="Price"> </span>
+                  </div>
+                        <div class="form-group">
+                      <label asp-for="DiscountPrice" ></label>
+                      <input asp-for="DiscountPrice"  class="form-control">
+                <span asp-validation-for="DiscountPrice"> </span>
+                  </div>
+
+                <div class="form-group">
+                      <label asp-for="StockCount" ></label>
+                      <input asp-for="StockCount"  class="form-control" >
+                <span asp-validation-for="StockCount"> </span>
+                  </div>
+                
+
+                  
+                <div class="form-group">
+                      <label asp-for="TaxPercent" ></label>
+                      <input asp-for="TaxPercent"  class="form-control" >
+                <span asp-validation-for="TaxPercent"> </span>
+                  </div>
+                   <div class="form-group">
+                      <label asp-for="Desc" ></label>
+                      <input asp-for="Desc"  class="form-control" >
+                <span asp-validation-for="Desc"> </span>
+                  </div>
+
+                
+                  <select  asp-for="CategoryId" class="form-select" asp-items="@ViewBag.Categories" aria-label="Default select example">
+                 <option  selected>Open this select menu</option>
+       
+                 </select>
+          
+                  <select  asp-for="BrandId" class="form-select" asp-items="@ViewBag.Brands" aria-label="Default select example">
+        <option  selected>Open this select menu</option>
+       
+         </select>
+
+          
+               <div class="form-group">
+                      <label asp-for="Photo" ></label>
+                      <input asp-for="Photo" multiple  class="form-control" >
+                <span class="text-danger" asp-validation-for="Photo"> </span>
+                  </div>
+
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              <a asp-action="index" class="btn btn-dark">  Go back  </a>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+</div>@*
+@section Scripts
+{
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <partial name="_ValidationPartial">
+         <script>
+             ClassicEditor
+                     
+                                .create( document.querySelector( '#Desc' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+                </script>
+}*@
+
+
+

@@ -1,0 +1,62 @@
+﻿@model List<Product>
+@{
+    Layout = null;
+}
+
+ @foreach (var item in Model)
+                         {
+                             
+                          @foreach (var img in item.ProductImages)
+                            {
+                                if (img.IsMain)
+                                {
+                                         <div class="single-product-list mt-30">
+                                <div class="row">
+                                    <div class="col-sm-5 col-xl-3">
+                                        <div class="product-image">
+                                            <a href="single-product.html">
+                                                <img class="first-image" src="~/images/@img.ImageUrl" alt="product">
+                                                <img class="second-image" src="~/images/@img.ImageUrl" alt="product">
+                                            </a>
+                                            <span class="discount-product">@item.DiscountPrice%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 col-xl-9">
+                                        <div class="product-content">
+                                            <ul class="product-rating">
+                                                <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                <li class="rating-on"><i class="fas fa-star"></i></li>
+                                                <li class="rating-on"><i class="fas fa-star"></i></li>
+                                            </ul>
+                                            <h4 class="product-title"><a href="single-product.html">@item.Name</a></h4>
+                                                    @if(item.InStock)
+                                                    {
+                                                          <span class="availability">Availability: 
+                                                        @item.StockCount In Stock
+                                                        </span>
+                                                    }else{
+                                                         <span class="availability">Availability: NoStock </span>
+                                                    }
+
+                                                   
+
+                                                    <div class="product-price">
+                                                <span class="regular-price">€@item.Price</span>
+                                                <span class="price-sale">€@(item.Price -(item.Price*item.DiscountPrice / 100))</span>
+                                            </div>
+                                            <p> @item.Desc </p>
+                                            <ul class="product-meta">
+                                                <li><a href="#"><i class="icon ion-bag"></i></a></li>
+                                                <li><a href="#"><i class="icon ion-android-favorite-outline"></i></a></li>
+                                                <li><a href="#"><i class="icon ion-android-options"></i></a></li>
+                                                <li><a data-toggle="modal" data-target="#productQuickModal" href="#"><i class="icon ion-android-open"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- single product List -->
+                                }
+                            }
+                         }

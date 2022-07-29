@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Identity
+@model List<IdentityRole>
+
+<div class="row">
+       <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Role Table</h4>
+                  <a asp-action="create" class="btn btn-primary">Create</a>
+                  <div>
+
+                              <form method="post" asp-action="Index">
+                         </form>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                     
+                          <th>Name</th>
+                          <th>Settings</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                   @foreach (IdentityRole item in Model)
+                            {
+                      
+                                <tr>
+                  
+                          <td>@item.Name</td>
+                         
+                          <td>
+
+                            <a class="btn btn-danger"  asp-action="delete" asp-route-id="@item.Id"><i class="remove ti-close"></i></a>
+                          </td>
+                        </tr>  
+                            }
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+</div>

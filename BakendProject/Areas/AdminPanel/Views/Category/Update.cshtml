@@ -1,0 +1,42 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+<div class="row">
+    
+  <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Basic form elements</h4>
+                  <p class="card-description">
+                   Update category
+                  </p>
+                  <form class="forms-sample"  method="post" >
+                    <div class="form-group">
+                      <label asp-for="Name">Name</label>
+                      <input asp-for="Name"  class="form-control"  placeholder="Name">
+                      <span class="text-danger" asp-validation-for="Name"></span>  
+ 
+                  </div>
+                   
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                   <a class="btn btn-dark" asp-action="index">Go back</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+</div>
+
+@*@section Scripts{
+      
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    //let formData = new FormData();
+    //formData.append("Name","")
+</script>
+}
+*@

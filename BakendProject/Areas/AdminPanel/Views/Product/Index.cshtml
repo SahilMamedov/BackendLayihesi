@@ -1,0 +1,80 @@
+﻿@model PaginationVM<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+
+}
+
+<div class="row">
+       <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Basic Table</h4>
+                  <p class="card-description">
+                     <a class="btn btn-success" asp-action="create" > Add category</a>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Image</th>
+                          <th>Name</th>
+                      <th>Price</th>
+                       <th>Count</th>
+                          <th>Category</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                   @foreach (var item in Model.Items)
+                            {
+                                count++;
+                                <tr>
+                          <td>@count</td>
+                          @foreach (var img in item.ProductImages)
+                         {
+                             if (img.IsMain)
+                                        {                
+                                            <td><img width="150" src="~/images/@img.ImageUrl"> </td>
+
+                                            
+                                        }
+                         }
+                   
+                          <td>@item.Name</td>
+                          <td>$@item.Price</td>
+                              <td>@item.StockCount</td>
+                             <td>@item.Category.Name</td>
+                          
+                          <td>
+                          <a class="btn btn-warning" asp-action="update" asp-route-id="@item.Id"> Update </a>
+                            <a class="btn btn-primary" asp-action="detail" asp-route-id="@item.Id">  Detail</a>
+                            <a class="btn btn-danger"  asp-action="delete" asp-route-id="@item.Id"><i class="remove ti-close"></i></a>
+                          </td>
+                        </tr>  
+                            }
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+             <div class="col-12 d-flex justify-content-center " >
+                  <nav aria-label="...">
+  <ul class="pagination">
+   @for (var i = 1; i <= Model.PageCount; i++)
+  {
+       <li class="page-item @(Model.CurrentPage==i?"disabled":"")"> <a class="page-link"asp-action="index" asp-route-page="@i" >@i</a>
+    </li>
+  }
+   
+  </ul>
+</nav>
+
+ </div>
+
+</div>

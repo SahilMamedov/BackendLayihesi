@@ -1,0 +1,20 @@
+﻿      
+@model HeaderVM
+                                  @foreach (var item in @Model.BasketItems)
+                                  {
+                                              <li>
+                                                <div class="single-cart-item d-flex">
+                                                    <div class="cart-item-thumb">
+                                                        <a href="single-product.html"><img src="~/images/@item.ImgUrl" alt="product"></a>
+                                                        <span class="product-quantity">@item.Count</span>
+                                                    </div>
+                                                    <div class="cart-item-content media-body">
+                                                        <h5 class="product-name"><a href="single-product.html">@item.Product.Name</a></h5>
+                                                        <span class="product-price">€@item.Price</span>
+                                                        <span class="product-color"><strong>Color:</strong> White</span>
+                                                        <a href="#" class="product-close"><i class="fal fa-times"></i></a>
+                                                    </div>
+                                                </div>             
+                                             </li>
+                                                 
+                                  }

@@ -1,0 +1,25 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <form class="pt-3" method="post">
+                  <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+              
+                <div class="form-group">
+                  <input asp-for="Email"  class="form-control form-control-lg"  placeholder="Email">
+                  <div><span class="text-danger" asp-validation-for="Email"></span></div>
+                </div>
+               
+                <div class="form-group">
+                  <input asp-for="Password" class="form-control form-control-lg"  placeholder="Password">
+                  <div><span class="text-danger" asp-validation-for="Password"></span></div>
+                </div>
+              
+                 <div class="form-group">
+                 <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+           
+              </form>
+

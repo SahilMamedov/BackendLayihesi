@@ -1,0 +1,81 @@
+﻿@model List<BasketItem>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <section class="wishlist-page pt-10">
+        <div class="container-fluid custom-container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="wishlist mt-30">
+                        <div class="shopping-cart-table table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="image">Image</th>
+                                        <th class="product">Product</th>
+                                        <th class="price">Price</th>
+                                        <th class="quantity">Quantity</th>
+                                        <th class="total">Total</th>
+                                        <th class="delete">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                   {
+                                       <tr>
+                                        <td>
+                                            <div class="product-image">
+                                                <img src="~/images/@item.ImgUrl" alt="cart">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product-title">
+                                                <h4 class="title"><a href="single-product.html">@item.Product.Name</a></h4>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product-price">
+                                                <span class="price">@item.Price</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product-quantity">
+                                                <div class="quantity mt-15 d-flex">
+                                                    <button type="button" data-id="@item.ProductId" class="minusBtn"><i class="fal fa-minus"></i></button>
+                                                    <input class="countProduct" data-id="@item.ProductId" type="text" value="@item.Count" />
+                                                    <button data-id="@item.ProductId" type="button" class="plusBtn"><i class="fal fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product-total">
+                                                <span data-id="@item.ProductId" class="total-amount">€@item.Sum</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product-delete">
+                                                <a data-id="@item.ProductId" href="#" class="removeBtn"><i class="fal fa-trash-alt"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                   }
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a asp-controller="sale" asp-action="SaleStart" class="sale btn btn-warning">Sale</a>
+        </div>
+        
+    </section>
+
+
+
