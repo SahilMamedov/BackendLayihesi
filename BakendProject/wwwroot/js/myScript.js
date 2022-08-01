@@ -206,14 +206,19 @@ minusBtn.forEach(item => {
 })
 
 plusBtn.forEach(item => {
-  
+    
     const dataIdProduct = item.getAttribute("data-id")
     item.addEventListener("click", async () => {
+
+      
+
         let total = 0
         const { data } = await axios.get("/basket/plus?id=" + dataIdProduct)
 
         
         countProduct.forEach(value => {
+
+            
             const productId = value.getAttribute("data-id")
             if (productId == dataIdProduct) {
 
@@ -227,8 +232,10 @@ plusBtn.forEach(item => {
                          
                             if (sumId == dataIdProduct) {
                                 s.innerHTML = "€" + item.isExistSum
+
                             }
                             totalProduct.innerHTML = "$" + total
+                         
                         })
 
                     } else {

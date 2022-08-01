@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BakendProject.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
 

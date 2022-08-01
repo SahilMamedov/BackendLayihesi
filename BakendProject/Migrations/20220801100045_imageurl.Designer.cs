@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakendProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220725215020_newCol")]
-    partial class newCol
+    [Migration("20220801100045_imageurl")]
+    partial class imageurl
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,8 +99,23 @@ namespace BakendProject.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImgUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<double>("Sum")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
@@ -247,6 +262,34 @@ namespace BakendProject.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("BakendProject.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("comments");
+                });
+
             modelBuilder.Entity("BakendProject.Models.ModalProduct", b =>
                 {
                     b.Property<int>("Id")
@@ -308,6 +351,9 @@ namespace BakendProject.Migrations
 
                     b.Property<int>("Count")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -661,6 +707,19 @@ namespace BakendProject.Migrations
                     b.HasOne("BakendProject.Models.Category", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId");
+                });
+
+            modelBuilder.Entity("BakendProject.Models.Comment", b =>
+                {
+                    b.HasOne("BakendProject.Models.AppUser", "appUser")
+                        .WithMany("comments")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("BakendProject.Models.Product", "product")
+                        .WithMany("comments")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BakendProject.Models.Order", b =>

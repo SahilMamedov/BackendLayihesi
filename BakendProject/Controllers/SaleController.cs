@@ -32,7 +32,7 @@ namespace BakendProject.Controllers
                 AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
                 List<Product> dbProducts = _context.Products.Include(p => p.ProductImages).ToList();
                 List<BasketItem> basketItems = _context.BasketItems.Include(b => b.Product).Where(b => b.AppUserId == user.Id).ToList();
-                OrderItem orderItem = new OrderItem();
+                
                 Order order = new Order();
                 foreach (var item in basketItems)
                 {
@@ -55,7 +55,7 @@ namespace BakendProject.Controllers
                     {
                         product.StockCount -= item.Count;
                     }
-
+                    OrderItem orderItem = new OrderItem();
                     orderItem.ProductId = item.ProductId;
                     orderItem.Product = item.Product;
                     orderItem.Count = item.Count;
@@ -63,12 +63,16 @@ namespace BakendProject.Controllers
                     orderItem.OrderId = order.Id;
                     orderItem.Order = order;
                     orderItem.ImageUrl = item.ImgUrl;
-                
+
+
+
+                    await _context.AddAsync(orderItem);
+
                     _context.BasketItems.Remove(item);
                 }
-               
-                await _context.AddAsync(orderItem);
-                await _context.SaveChangesAsync();
+
+                    await _context.SaveChangesAsync();
+                
             }
             return RedirectToAction("index","sale");
         }

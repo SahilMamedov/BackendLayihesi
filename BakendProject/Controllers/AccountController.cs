@@ -57,7 +57,7 @@ namespace BakendProject.Controllers
                 return View(registerVM);
             }
             await _signInManager.SignInAsync(user, true);
-            await _userManager.AddToRoleAsync(user, UserRoles.Member.ToString());
+            await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
             
             return RedirectToAction("index", "home");
         }

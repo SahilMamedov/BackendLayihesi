@@ -2,7 +2,7 @@
 
 namespace BakendProject.Migrations
 {
-    public partial class TotalPrice : Migration
+    public partial class imageurl : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
