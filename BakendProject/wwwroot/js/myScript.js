@@ -255,15 +255,7 @@ plusBtn.forEach(item => {
     })
 })
 
-let buy = document.getElementById("buy")
-buy.addEventListener("click",handleClickBuy)
 
-const handleClickBuy = () => {
-
-    alert("salam")
-
-
-}
 
 ///-------------------------------------////
 
